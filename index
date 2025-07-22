@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Czym jest miasto?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background-color: #1b2e45;
+      color: #f5faff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+      height: 260px;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 30px;
+      background-color: #243b58;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .slide h3 {
+      color: #90caf9;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 4px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot.active {
+      background-color: #90caf9;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #90caf9;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .arrow.left { left: 10px; }
+    .arrow.right { right: 10px; }
+
+    @media (max-width: 600px) {
+      .slide {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Czym jest miasto?</h2>
+
+    <div class="slider">
+      <button class="arrow left" onclick="plusSlides(-1)">&#10094;</button>
+      <div class="slides" id="slides">
+        <div class="slide">
+          <h3>Definicja administracyjna</h3>
+          <p>Miasto to jednostka, która otrzymała status miejski na mocy decyzji administracyjnej (np. od władz państwowych lub lokalnych). Często nie ma to związku z liczbą mieszkańców czy zabudową – wystarczy, że miejscowość spełni określone prawnie warunki.</p>
+        </div>
+        <div class="slide">
+          <h3>Definicja funkcjonalna</h3>
+          <p>Miasto to obszar, który pełni funkcje miejskie – np. oferuje usługi, zatrudnienie, edukację – dla siebie i okolicznych terenów. Często obejmuje również przedmieścia i strefy dojazdów do pracy (tzw. strefy funkcjonalne).</p>
+        </div>
+        <div class="slide">
+          <h3>Definicja demograficzna</h3>
+          <p>Miasto to miejscowość, która przekracza określoną liczbę mieszkańców lub gęstość zaludnienia, np. 2 000, 10 000, 50 000 osób – zależnie od kraju. Czasem uwzględnia się też dominującą działalność (np. nierolniczą).</p>
+        </div>
+        <div class="slide">
+          <h3>Definicja morfologiczna</h3>
+          <p>Miasto rozumiane jako zwarta, gęsto zabudowana przestrzeń, z dominacją budynków mieszkalnych i usługowych, siecią ulic, placów, bez dużych pustych przestrzeni rolnych.</p>
+        </div>
+      </div>
+      <button class="arrow right" onclick="plusSlides(1)">&#10095;</button>
+    </div>
+
+    <div class="buttons">
+      <span class="dot" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementById('slides');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+      const totalSlides = slides.children.length;
+      if (index >= totalSlides) slideIndex = 0;
+      else if (index < 0) slideIndex = totalSlides - 1;
+      else slideIndex = index;
+
+      slides.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === slideIndex);
+      });
+    }
+
+    function plusSlides(n) {
+      showSlide(slideIndex + n);
+    }
+
+    function currentSlide(n) {
+      showSlide(n);
+    }
+
+    showSlide(slideIndex);
+  </script>
+</body>
+</html>
