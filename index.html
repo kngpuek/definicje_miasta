@@ -8,8 +8,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Roboto, sans-serif;
-      background-color: #1b2e45;
-      color: #f5faff;
+      background-color: #8f70b3;
+      color: #2f1743;
     }
 
     .container {
@@ -22,13 +22,14 @@
     h2 {
       font-size: 32px;
       margin-bottom: 30px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
 
     .slider {
       position: relative;
       overflow: hidden;
       height: 260px;
+      margin-top: 20px;
     }
 
     .slides {
@@ -40,13 +41,19 @@
       min-width: 100%;
       box-sizing: border-box;
       padding: 30px;
-      background-color: #243b58;
+      background-color: #f4b721;
       border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      text-align: left;
     }
 
     .slide h3 {
-      color: #90caf9;
+      color: #2f1743;
+      margin-top: 0;
+    }
+
+    .slide p {
+      line-height: 1.7;
     }
 
     .buttons {
@@ -64,7 +71,7 @@
     }
 
     .dot.active {
-      background-color: #90caf9;
+      background-color: #f4b721;
     }
 
     .arrow {
@@ -74,7 +81,7 @@
       font-size: 28px;
       background: none;
       border: none;
-      color: #90caf9;
+      color: #f4b721;
       cursor: pointer;
       z-index: 1;
     }
@@ -91,7 +98,7 @@
 </head>
 <body>
   <div class="container">
-    <h2>Czym jest miasto?</h2>
+    <h2><b>Czym jest miasto?</b></h2>
 
     <div class="slider">
       <button class="arrow left" onclick="plusSlides(-1)">&#10094;</button>
