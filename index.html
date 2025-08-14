@@ -136,7 +136,8 @@
   const slides = document.getElementById('slides');
   const dots = document.querySelectorAll('.dot');
   const totalSlides = slides.children.length;
-  const delay = 5000; // czas wyświetlania w ms
+  const delay = 5000; // czas statycznego wyświetlania w ms
+  let timer;
 
   function showSlide(index) {
     if (index >= totalSlides) slideIndex = 0;
@@ -150,13 +151,28 @@
   }
 
   function nextSlide() {
-    showSlide(slideIndex + 1);
-    setTimeout(nextSlide, delay);
+    slideIndex++;
+    showSlide(slideIndex);
+    timer = setTimeout(nextSlide, delay);
   }
 
-  // uruchomienie po załadowaniu
+  function plusSlides(n) {
+    clearTimeout(timer); // zatrzymanie automatu przy ręcznej zmianie
+    slideIndex += n;
+    showSlide(slideIndex);
+    timer = setTimeout(nextSlide, delay);
+  }
+
+  function currentSlide(n) {
+    clearTimeout(timer);
+    slideIndex = n;
+    showSlide(slideIndex);
+    timer = setTimeout(nextSlide, delay);
+  }
+
+  // start
   showSlide(slideIndex);
-  setTimeout(nextSlide, delay);
+  timer = setTimeout(nextSlide, delay);
 </script>
 </body>
 </html>
