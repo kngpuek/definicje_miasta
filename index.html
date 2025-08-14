@@ -131,34 +131,32 @@
     </div>
   </div>
 
- <script>
-    let slideIndex = 0;
-    const slides = document.getElementById('slides');
-    const dots = document.querySelectorAll('.dot');
+<script>
+  let slideIndex = 0;
+  const slides = document.getElementById('slides');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = slides.children.length;
+  const delay = 5000; // czas wyświetlania w ms
 
-    function showSlide(index) {
-      const totalSlides = slides.children.length;
-      if (index >= totalSlides) slideIndex = 0;
-      else if (index < 0) slideIndex = totalSlides - 1;
-      else slideIndex = index;
+  function showSlide(index) {
+    if (index >= totalSlides) slideIndex = 0;
+    else if (index < 0) slideIndex = totalSlides - 1;
+    else slideIndex = index;
 
-      slides.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === slideIndex);
-      });
-    }
+    slides.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === slideIndex);
+    });
+  }
 
-    function plusSlides(n) {
-      showSlide(slideIndex + n);
-    }
+  function nextSlide() {
+    showSlide(slideIndex + 1);
+    setTimeout(nextSlide, delay);
+  }
 
-    function currentSlide(n) {
-      showSlide(n);
-    }
-
-    showSlide(slideIndex);
-
-    setInterval(() => plusSlides(1), 5000);
+  // uruchomienie po załadowaniu
+  showSlide(slideIndex);
+  setTimeout(nextSlide, delay);
 </script>
 </body>
 </html>
